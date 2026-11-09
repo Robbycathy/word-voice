@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>英文发音</title>
+  <link rel="stylesheet" href="/static/styles.css?v=voices-1">
+  <script src="/static/app.js?v=voices-1" defer></script>
+</head>
+<body>
+  <main>
+    <h1>英文发音</h1>
+    <form id="speech-form" novalidate>
+      <label for="text-input">输入英文单词或句子，最多 1000 个字符。</label>
+      <textarea id="text-input" name="text" rows="7" maxlength="1000" placeholder="Hello, how are you today?" required></textarea>
+      <fieldset class="voice-type">
+        <legend>语音类型</legend>
+        <label><input type="radio" name="engine" value="online" checked> 在线 TTS</label>
+        <label><input type="radio" name="engine" value="local"> 本地语音</label>
+      </fieldset>
+      <div class="voice-choice">
+        <label for="voice-select">选择声音</label>
+        <select id="voice-select" name="voice" aria-describedby="voice-status" disabled required>
+          <option value="">正在加载声音…</option>
+        </select>
+        <p id="voice-status" role="status" aria-live="polite">正在加载声音…</p>
+        <button id="reload-voices" type="button" hidden>重新加载</button>
+      </div>
+      <button id="submit-button" type="submit" disabled>生成并播放</button>
+    </form>
+    <p id="status-message" role="status" aria-live="polite" hidden></p>
+    <audio id="audio-player" controls preload="auto" aria-label="英文发音播放器" hidden></audio>
+  </main>
+</body>
+</html>
